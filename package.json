@@ -40,7 +40,9 @@
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2",
 		"prettier": "^3.2.5",
+		"sass": "^1.77.2",
 		"stylelint": "^16.5.0",
+		"stylelint-config-standard-scss": "^13.1.0",
 		"typescript": "^5.2.2",
 		"vite": "^5.2.0"
 	},

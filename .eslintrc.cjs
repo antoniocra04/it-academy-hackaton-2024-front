@@ -3,8 +3,8 @@ module.exports = {
 		browser: true,
 		es2021: true,
 	},
-	extends: [ 'plugin:react/recommended', 'plugin:prettier/recommended'],
-	parser: "@typescript-eslint/parser",
+	extends: ['plugin:react/recommended', 'plugin:prettier/recommended', 'plugin:react/jsx-runtime'],
+	parser: '@typescript-eslint/parser',
 	overrides: [
 		{
 			env: {

@@ -1,0 +1,21 @@
+.loginFormContainer {
+	display: flex;
+	position: relative;
+	width: 400px;
+	margin: auto;
+	top: 25vh;
+}
+
+.loginForm {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.forgotButton {
+	float: right;
+}
+
+.loginButton {
+	width: 100%;
+}
