@@ -1,0 +1,52 @@
+.header {
+}
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 75px;
+}
+
+.headerLogo {
+	height: 40px;
+	margin-right: 32px;
+}
+
+.headerMenu {
+	display: flex;
+	align-items: center;
+}
+
+.menuList {
+	display: flex;
+	list-style: none;
+	column-gap: 32px;
+	margin: 0;
+}
+
+.headerButton {
+	display: flex;
+	background-color: #fff;
+	border: none;
+	color: black;
+	column-gap: 16px;
+	font-size: 16px;
+	font-weight: 500;
+	justify-content: center;
+	align-items: center;
+}
+
+.menuLink {
+	font-weight: 600;
+	color: black;
+}
+
+.buttonText {
+	margin: 0;
+}
+
+.buttonImage {
+	width: 30px;
+	height: 30px;
+}
