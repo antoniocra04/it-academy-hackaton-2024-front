@@ -1,10 +1,22 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { IFieldData } from '../../helpers/FieldData';
+import { useLogin } from '@hooks/useLogin';
+import { useState } from 'react';
 import styles from './style.module.scss';
 
 export const LoginPage: React.FC = () => {
 	const navigate = useNavigate();
+	const [fields, setFields] = useState<IFieldData[]>([]);
+	const loginQuery = useLogin();
+
+	const login = () => {
+		for (let field of fields) {
+			if (field.errors?.length || !field.value) return;
+		}
+		loginQuery.mutate({ email: fields[0].value, password: fields[1].value });
+	};
 
 	return (
 		<div className={styles.loginFormContainer}>
@@ -14,6 +26,10 @@ export const LoginPage: React.FC = () => {
 					remember: true,
 				}}
 				className={styles.loginForm}
+				fields={fields}
+				onFieldsChange={(_, allFields) => {
+					setFields(allFields);
+				}}
 			>
 				<Form.Item
 					name="username"
@@ -48,7 +64,7 @@ export const LoginPage: React.FC = () => {
 				</Form.Item>
 
 				<Form.Item>
-					<Button type="primary" htmlType="submit" className={styles.loginButton}>
+					<Button type="primary" htmlType="submit" className={styles.loginButton} onClick={login}>
 						Войти
 					</Button>
 					или <a onClick={() => navigate('/registration')}>создать аккаунт</a>
