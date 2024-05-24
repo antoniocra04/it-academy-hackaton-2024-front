@@ -1,7 +1,5 @@
-import { login } from '@api/services/auth';
 import { useTypedDispatch } from '@store/hooks/baseHooks';
-import { logout, setUser } from '@store/user/userSlice';
-import { useMutation } from '@tanstack/react-query';
+import { logout } from '@store/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 /**

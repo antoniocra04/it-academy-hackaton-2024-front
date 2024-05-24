@@ -38,7 +38,7 @@ const columns: TableProps<User>['columns'] = [
 	{
 		title: 'Действие',
 		key: 'action',
-		render: (_, record) => (
+		render: (_) => (
 			<Space size="middle">
 				<a>Delete</a>
 			</Space>

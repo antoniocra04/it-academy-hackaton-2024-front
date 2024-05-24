@@ -8,13 +8,6 @@ interface PageLayoutProps {
 	children: React.ReactNode;
 }
 
-const items = [
-	{
-		key: 1,
-		label: `nav`,
-	},
-];
-
 export const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
 	const {
 		token: { colorBgContainer, borderRadiusLG },
