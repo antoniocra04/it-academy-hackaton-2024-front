@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
-import { LogoutOutlined } from '@ant-design/icons';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './style.module.scss';
 import { Button } from 'antd';
+import { useLogout } from '@hooks/useLogout';
+import { useTypedSelector } from '@store/hooks/baseHooks';
 
 export const Header: React.FC = () => {
+	const logout = useLogout();
+	const navigate = useNavigate();
+	const user = useTypedSelector((state) => state.user);
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.headerContainer}>
@@ -18,13 +23,30 @@ export const Header: React.FC = () => {
 							</Link>
 						</li>
 						<li className={styles.menuItem}>
-							<Link to={'/tickets'} className={styles.menuLink}>
-								Группы
+							<Link to={'/'} className={styles.menuLink}>
+								Клубы
 							</Link>
 						</li>
+						{user.role ? (
+							<li className={styles.menuItem}>
+								<Link to={'/users'} className={styles.menuLink}>
+									Пользователи
+								</Link>
+							</li>
+						) : (
+							''
+						)}
 					</ul>
 				</nav>
-				<Button type="primary">Выйти</Button>
+				{user.id ? (
+					<Button type="primary" onClick={logout}>
+						Выйти
+					</Button>
+				) : (
+					<Button type="primary" onClick={() => navigate('/login')}>
+						Войти
+					</Button>
+				)}
 			</div>
 		</header>
 	);

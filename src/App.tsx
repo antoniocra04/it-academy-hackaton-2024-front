@@ -3,6 +3,8 @@ import { LoginPage } from './pages/login';
 import { RegistrationPage } from './pages/registration';
 import { GroupsPage } from './pages/groups';
 import { GroupPage } from './pages/group';
+import { ProfilePage } from './pages/profile';
+import { UsersPage } from './pages/users';
 
 const router = createBrowserRouter([
 	{
@@ -14,12 +16,20 @@ const router = createBrowserRouter([
 		element: <RegistrationPage />,
 	},
 	{
-		path: '/groups',
+		path: '/',
 		element: <GroupsPage />,
 	},
 	{
 		path: '/group',
 		element: <GroupPage />,
+	},
+	{
+		path: '/profile',
+		element: <ProfilePage />,
+	},
+	{
+		path: '/users',
+		element: <UsersPage />,
 	},
 ]);
 
