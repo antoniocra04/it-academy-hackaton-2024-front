@@ -1,75 +1,14 @@
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
-import { IFieldData } from '../../helpers/FieldData';
-import { useLogin } from '@hooks/useLogin';
-import { useState } from 'react';
-import styles from './style.module.scss';
+import { LoginForm } from '@components/loginForm';
+import { PageTitle } from '@components/pageTitle';
+import { Flex } from 'antd';
 
 export const LoginPage: React.FC = () => {
-	const navigate = useNavigate();
-	const [fields, setFields] = useState<IFieldData[]>([]);
-	const loginQuery = useLogin();
-
-	const login = () => {
-		for (let field of fields) {
-			if (field.errors?.length || !field.value) return;
-		}
-		loginQuery.mutate({ email: fields[0].value, password: fields[1].value });
-	};
-
 	return (
-		<div className={styles.loginFormContainer}>
-			<Form
-				name="normal_login"
-				initialValues={{
-					remember: true,
-				}}
-				className={styles.loginForm}
-				fields={fields}
-				onFieldsChange={(_, allFields) => {
-					setFields(allFields);
-				}}
-			>
-				<Form.Item
-					name="username"
-					rules={[
-						{
-							required: true,
-							message: 'Введите логин',
-						},
-					]}
-				>
-					<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Логин" />
-				</Form.Item>
-				<Form.Item
-					name="password"
-					rules={[
-						{
-							required: true,
-							message: 'Введите пароль',
-						},
-					]}
-				>
-					<Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="Пароль" />
-				</Form.Item>
-				<Form.Item>
-					<Form.Item name="remember" valuePropName="checked" noStyle>
-						<Checkbox>Запомнить меня</Checkbox>
-					</Form.Item>
-
-					<a className={styles.forgotButton} href="">
-						Забыл пароль
-					</a>
-				</Form.Item>
-
-				<Form.Item>
-					<Button type="primary" htmlType="submit" className={styles.loginButton} onClick={login}>
-						Войти
-					</Button>
-					или <a onClick={() => navigate('/registration')}>создать аккаунт</a>
-				</Form.Item>
-			</Form>
-		</div>
+		<Flex justify="center" style={{ marginTop: '20vh' }}>
+			<Flex vertical style={{ width: '500px' }} align="center">
+				<PageTitle title="Авторизация" />
+				<LoginForm />
+			</Flex>
+		</Flex>
 	);
 };

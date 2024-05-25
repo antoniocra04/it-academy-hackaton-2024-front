@@ -5,6 +5,9 @@ import { GroupsPage } from './pages/groups';
 import { GroupPage } from './pages/group';
 import { ProfilePage } from './pages/profile';
 import { UsersPage } from './pages/users';
+import { PrivateRoute } from '@components/privateRoute';
+import { CreateGroupPage } from './pages/createGroup';
+import { CreateEventPage } from './pages/createEvent';
 
 const router = createBrowserRouter([
 	{
@@ -20,16 +23,40 @@ const router = createBrowserRouter([
 		element: <GroupsPage />,
 	},
 	{
-		path: '/group',
+		path: '/group/:id',
 		element: <GroupPage />,
 	},
 	{
-		path: '/profile',
-		element: <ProfilePage />,
+		path: '/users',
+		element: (
+			<PrivateRoute>
+				<UsersPage />
+			</PrivateRoute>
+		),
 	},
 	{
-		path: '/users',
-		element: <UsersPage />,
+		path: '/createEvent/:groupId',
+		element: (
+			<PrivateRoute>
+				<CreateEventPage />
+			</PrivateRoute>
+		),
+	},
+	{
+		path: '/profile',
+		element: (
+			<PrivateRoute>
+				<ProfilePage />
+			</PrivateRoute>
+		),
+	},
+	{
+		path: '/createClub',
+		element: (
+			<PrivateRoute>
+				<CreateGroupPage />
+			</PrivateRoute>
+		),
 	},
 ]);
 

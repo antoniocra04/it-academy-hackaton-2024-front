@@ -1,6 +1,9 @@
 import { Space, TableProps, Tag, Table } from 'antd';
 import { User } from '../../helpers/User';
 import { PageLayout } from '@components/pageLayout';
+import { useQuery } from '@tanstack/react-query';
+import { getAllUsers } from '@api/services/user';
+import { useEffect } from 'react';
 
 const columns: TableProps<User>['columns'] = [
 	{
@@ -46,22 +49,14 @@ const columns: TableProps<User>['columns'] = [
 	},
 ];
 
-const data: User[] = [
-	{
-		login: 'adsf',
-		name: 'asdf',
-		surname: 'asdfsad',
-		fatherland: 'asdfsa',
-		role: 1,
-		id: 'asdf',
-		password: 'asdf',
-	},
-];
-
 export const UsersPage: React.FC = () => {
+	const users = useQuery({ queryKey: ['users'], queryFn: getAllUsers });
+	useEffect(() => {
+		console.log(users);
+	}, [users.isSuccess]);
 	return (
 		<PageLayout>
-			<Table columns={columns} dataSource={data} />
+			<Table columns={columns} dataSource={users.data?.data.$values} />
 		</PageLayout>
 	);
 };

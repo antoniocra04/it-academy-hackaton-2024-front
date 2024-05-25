@@ -3,15 +3,22 @@ import { Button, Card } from 'antd';
 import styles from './style.module.scss';
 
 interface GroupInfoProps {
-	name: string;
-	description: string;
-	fullDescription: string;
-	partisipants: string;
+	name: string | undefined;
+	description: string | undefined;
+	fullDescription: string | undefined;
+	partisipants: string | undefined;
+	isLoading: boolean;
 }
 
 const { Meta } = Card;
 
-export const GroupInfo: React.FC<GroupInfoProps> = ({ name, description, partisipants, fullDescription }) => {
+export const GroupInfo: React.FC<GroupInfoProps> = ({
+	name,
+	description,
+	partisipants,
+	fullDescription,
+	isLoading,
+}) => {
 	return (
 		<Card
 			style={{ width: 600 }}
@@ -22,6 +29,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({ name, description, partisi
 					src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
 				/>
 			}
+			loading={isLoading}
 		>
 			<Meta title={name} description={description} />
 			<p>{fullDescription}</p>

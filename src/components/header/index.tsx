@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './style.module.scss';
-import { Button } from 'antd';
+import { Button, Flex } from 'antd';
 import { useLogout } from '@hooks/useLogout';
 import { useTypedSelector } from '@store/hooks/baseHooks';
 
@@ -39,9 +39,12 @@ export const Header: React.FC = () => {
 					</ul>
 				</nav>
 				{user.id ? (
-					<Button type="primary" onClick={logout}>
-						Выйти
-					</Button>
+					<Flex gap="middle">
+						<Button onClick={() => navigate('/createClub')}>Создать клуб</Button>
+						<Button type="primary" onClick={logout}>
+							Выйти
+						</Button>
+					</Flex>
 				) : (
 					<Button type="primary" onClick={() => navigate('/login')}>
 						Войти
