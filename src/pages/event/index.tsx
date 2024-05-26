@@ -19,7 +19,8 @@ export const EventPage: React.FC = () => {
 					name={event.data?.data.name}
 					description={event.data?.data.description}
 					fullDescription="asdfasdf"
-					partisipants="344"
+					partisipants={12}
+					id="12"
 				/>
 			</Flex>
 		</PageLayout>

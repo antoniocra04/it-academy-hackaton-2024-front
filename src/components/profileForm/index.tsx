@@ -76,6 +76,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ onSuccess }) => {
 							id: user.id,
 							password: user.password,
 							role: user.role,
+							clubsId: user.clubsId,
 						})
 					}
 				>

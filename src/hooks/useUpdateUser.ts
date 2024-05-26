@@ -1,6 +1,6 @@
 import { updateUser } from '@api/services/user';
 import { useTypedDispatch } from '@store/hooks/baseHooks';
-import { editUser, setUser } from '@store/user/userSlice';
+import { editUser } from '@store/user/userSlice';
 import { useMutation } from '@tanstack/react-query';
 
 /**
