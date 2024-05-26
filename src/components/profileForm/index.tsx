@@ -23,17 +23,8 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ onSuccess }) => {
 				setFields(allFields);
 			}}
 		>
-			<Form.Item
-				name="username"
-				rules={[
-					{
-						required: true,
-						message: 'Введите логин',
-					},
-				]}
-				initialValue={user.login}
-			>
-				<Input placeholder="Логин" />
+			<Form.Item name="username" rules={[]} initialValue={user.login}>
+				<Input placeholder="Логин" disabled />
 			</Form.Item>
 			<Form.Item
 				name="name"

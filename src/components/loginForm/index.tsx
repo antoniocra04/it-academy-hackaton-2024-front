@@ -6,10 +6,14 @@ import { useLogin } from '@hooks/useLogin';
 import { useState } from 'react';
 import styles from './style.module.scss';
 
-export const LoginForm: React.FC = () => {
+interface LoginFormProps {
+	onError: () => void;
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ onError }) => {
 	const navigate = useNavigate();
 	const [fields, setFields] = useState<IFieldData[]>([]);
-	const loginQuery = useLogin();
+	const loginQuery = useLogin(onError);
 
 	const login = () => {
 		for (let field of fields) {
@@ -35,7 +39,8 @@ export const LoginForm: React.FC = () => {
 				rules={[
 					{
 						required: true,
-						message: 'Введите логин',
+						type: 'email',
+						message: 'Введите корректный email адресс',
 					},
 				]}
 			>

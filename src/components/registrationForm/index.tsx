@@ -35,7 +35,8 @@ export const RegistrationForm: React.FC = () => {
 				rules={[
 					{
 						required: true,
-						message: 'Введите логин',
+						type: 'email',
+						message: 'Введите корректный email адресс',
 					},
 				]}
 			>

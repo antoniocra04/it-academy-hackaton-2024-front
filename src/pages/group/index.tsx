@@ -24,20 +24,21 @@ export const GroupPage: React.FC = () => {
 					name={groupInfo.data?.data.title}
 					description={groupInfo.data?.data.description}
 					fullDescription="asdfasdf"
-					partisipants="344"
+					partisipants={groupInfo.data?.data.countMembers}
+					id={groupInfo.data?.data.id}
 				/>
 			</Flex>
 			<Title>Мероприятия: </Title>
 			<Flex gap="middle" wrap>
 				{groupInfo.isSuccess
-					? groupInfo.data.data.events.$values.map((event, index) => (
-							<GroupActionCard key={index} name={event.name} description={event.description + ' ' + event.eventDate} />
+					? groupInfo.data.data.events.map((event, index) => (
+							<GroupActionCard id={event.id} key={index} name={event.name} description={event.description} />
 						))
 					: ''}
 			</Flex>
 			<Title>Обсуждение: </Title>
 			<Flex gap="middle" wrap>
-				<GroupActionCard name="asdfasdf" description="asdfasf" />
+				<GroupActionCard id="sdf" name="asdfasdf" description="asdfasf" />
 			</Flex>
 			{groupInfo.isSuccess
 				? groupInfo.data.data.creatorClubID == user.id && (

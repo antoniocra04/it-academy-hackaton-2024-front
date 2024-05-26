@@ -6,4 +6,5 @@ export interface User {
 	password: string;
 	fatherland: string;
 	role: number;
+	clubsId: string[];
 }

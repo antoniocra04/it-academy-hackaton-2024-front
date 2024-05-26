@@ -60,7 +60,14 @@ export const CreateClubForm: React.FC = () => {
 					type="primary"
 					htmlType="submit"
 					style={{ width: '100%' }}
-					onClick={() => createClub.mutate({ title: fields[0].value, description: fields[1].value, userId: id })}
+					onClick={() =>
+						createClub.mutate({
+							title: fields[0].value,
+							description: fields[1].value,
+							userId: id,
+							fullDescription: fields[2].value,
+						})
+					}
 				>
 					Создать
 				</Button>

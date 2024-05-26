@@ -15,7 +15,7 @@ export const useRegistration = () => {
 	const regMutation = useMutation({
 		mutationFn: (values: Parameters<typeof registration>[0]) => registration(values),
 		onSuccess: (data) => {
-			dispatch(setUser(data));
+			dispatch(setUser(data.data));
 			navigate('/');
 		},
 	});

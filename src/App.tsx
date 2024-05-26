@@ -8,6 +8,7 @@ import { UsersPage } from './pages/users';
 import { PrivateRoute } from '@components/privateRoute';
 import { CreateGroupPage } from './pages/createGroup';
 import { CreateEventPage } from './pages/createEvent';
+import { EventPage } from './pages/event';
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 	{
 		path: '/group/:id',
 		element: <GroupPage />,
+	},
+	{
+		path: '/event/:id',
+		element: <EventPage />,
 	},
 	{
 		path: '/users',

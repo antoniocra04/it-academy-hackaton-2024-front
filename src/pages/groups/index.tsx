@@ -12,12 +12,12 @@ export const GroupsPage: React.FC = () => {
 			<PageTitle title="Клубы" />
 			<Flex gap="middle" wrap>
 				{groups.isSuccess
-					? groups.data.data.$values.map((club, index) => (
+					? groups.data.data.map((club, index) => (
 							<GroupCard
 								key={index}
 								name={club.title}
 								description={club.description}
-								partisipants="33333"
+								partisipants={club.countMembers}
 								id={club.id}
 							/>
 						))

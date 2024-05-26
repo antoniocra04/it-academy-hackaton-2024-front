@@ -13,7 +13,7 @@ export const useDeleteUser = () => {
 	const navigate = useNavigate();
 	const dispatch = useTypedDispatch();
 	const loginMutation = useMutation({
-		mutationFn: (values: Parameters<typeof deleteUser>[0]) => deleteUser(values),
+		mutationFn: () => deleteUser(),
 		onSuccess: () => {
 			dispatch(logout());
 			navigate('/');

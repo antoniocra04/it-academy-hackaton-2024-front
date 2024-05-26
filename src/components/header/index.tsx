@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './style.module.scss';
 import { Button, Flex } from 'antd';
@@ -13,8 +14,8 @@ export const Header: React.FC = () => {
 		<header className={styles.header}>
 			<div className={styles.headerContainer}>
 				<nav className={styles.headerMenu}>
-					<Link to="/afisha" className={styles.headerLogo}>
-						<img src="../Logo.png" alt="" className={styles.logoImage} />
+					<Link to="/" className={styles.headerLogo}>
+						<img src={'/logo.svg'} alt="" className={styles.logoImage} />
 					</Link>
 					<ul className={styles.menuList}>
 						<li className={styles.menuItem}>

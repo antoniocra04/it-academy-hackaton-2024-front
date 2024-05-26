@@ -2,11 +2,12 @@ import React from 'react';
 import { Button, Card } from 'antd';
 import styles from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { useTypedSelector } from '@store/hooks/baseHooks';
 
 interface GroupCardProps {
 	name: string;
 	description: string;
-	partisipants: string;
+	partisipants: number;
 	id: string;
 }
 
@@ -14,6 +15,7 @@ const { Meta } = Card;
 
 export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisipants, id }) => {
 	const navigate = useNavigate();
+	const user = useTypedSelector((state) => state.user);
 	return (
 		<Card
 			hoverable
@@ -29,7 +31,7 @@ export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisi
 		>
 			<Meta title={name} description={description} />
 			<p>Участников: {partisipants}</p>
-			<Button type="primary">Вступить</Button>
+			{user.clubsId.includes(id) ? <Button danger>Выйти</Button> : <Button type="primary">Вступить</Button>}
 		</Card>
 	);
 };

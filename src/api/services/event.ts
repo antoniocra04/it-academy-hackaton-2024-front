@@ -8,6 +8,10 @@ export const createEvent = async (values: {
 	clubId: string;
 }): Promise<{ data: Event }> => {
 	return await axiosClient.post(
-		`AddEvent?name=${values.title}&description=${values.description}&idUser=${values.userId}&idClub=${values.clubId}`,
+		`Events/AddEvent?name=${values.title}&description=${values.description}&idUser=${values.userId}&idClub=${values.clubId}`,
 	);
+};
+
+export const getEvetntById = async (id: string): Promise<{ data: Event }> => {
+	return await axiosClient.get(`Events/getEvent?id=${id}`);
 };

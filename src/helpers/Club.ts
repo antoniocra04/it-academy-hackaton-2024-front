@@ -5,7 +5,6 @@ export interface Club {
 	title: string;
 	description: string;
 	creatorClubID: string;
-	events: {
-		$values: Event[];
-	};
+	countMembers: number;
+	events: Event[];
 }
