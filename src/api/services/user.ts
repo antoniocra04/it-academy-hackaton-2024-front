@@ -22,3 +22,11 @@ export const deleteUserByAdmin = async (userLogin: string): Promise<any> => {
 export const joinClub = async (clubId: string): Promise<any> => {
 	return await axiosClient.post(`Users/JoinInClub?clubId=${clubId}`);
 };
+
+export const exitClub = async (clubId: string): Promise<any> => {
+	return await axiosClient.post(`Users/ExitFromClub?clubId=${clubId}`);
+};
+
+export const makeAdmin = async (userLogin: string): Promise<any> => {
+	return await axiosClient.post(`Users/GiveAdminRole?userLogin=${userLogin}`);
+};

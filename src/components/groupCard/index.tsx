@@ -3,6 +3,8 @@ import { Button, Card } from 'antd';
 import styles from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '@store/hooks/baseHooks';
+import { useJoinClub } from '@hooks/useJoinClub';
+import { useExitClub } from '@hooks/useExitClub';
 
 interface GroupCardProps {
 	name: string;
@@ -15,6 +17,8 @@ const { Meta } = Card;
 
 export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisipants, id }) => {
 	const navigate = useNavigate();
+	const joinClub = useJoinClub();
+	const exitClub = useExitClub();
 	const user = useTypedSelector((state) => state.user);
 	return (
 		<Card
@@ -31,7 +35,27 @@ export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisi
 		>
 			<Meta title={name} description={description} />
 			<p>Участников: {partisipants}</p>
-			{user.clubsId.includes(id) ? <Button danger>Выйти</Button> : <Button type="primary">Вступить</Button>}
+			{user.clubsId.includes(id) ? (
+				<Button
+					onClick={(e) => {
+						exitClub.mutate(id);
+						e.stopPropagation();
+					}}
+					danger
+				>
+					Выйти
+				</Button>
+			) : (
+				<Button
+					onClick={(e) => {
+						joinClub.mutate(id);
+						e.stopPropagation();
+					}}
+					type="primary"
+				>
+					Вступить
+				</Button>
+			)}
 		</Card>
 	);
 };

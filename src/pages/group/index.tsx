@@ -13,6 +13,7 @@ const { Title } = Typography;
 export const GroupPage: React.FC = () => {
 	const { id } = useParams();
 	const user = useTypedSelector((state) => state.user);
+	console.log(user);
 	const groupInfo = useQuery({ queryKey: ['group'], queryFn: () => getClubById(id ? id : '') });
 	const navigate = useNavigate();
 

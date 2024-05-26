@@ -43,10 +43,17 @@ export const userSlice = createSlice({
 			state.surname = action.payload.surname;
 			state.fatherland = action.payload.fatherland;
 		},
+		addClub: (state, action: PayloadAction<string>) => {
+			console.log(state.clubsId);
+			state.clubsId = [...state.clubsId, action.payload];
+		},
+		removeClub: (state, action: PayloadAction<string>) => {
+			state.clubsId = [...state.clubsId.filter((c) => c != action.payload)];
+		},
 		logout: () => initialState,
 	},
 });
 
-export const { setUser, logout, editUser } = userSlice.actions;
+export const { setUser, logout, editUser, addClub, removeClub } = userSlice.actions;
 export const selectUser = (state: RootState): User => state.user;
 export default userSlice.reducer;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Card } from 'antd';
 import styles from './style.module.scss';
 import { useTypedSelector } from '@store/hooks/baseHooks';
+import { useJoinClub } from '@hooks/useJoinClub';
 
 interface GroupInfoProps {
 	name: string | undefined;
@@ -23,6 +24,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 	id,
 }) => {
 	const user = useTypedSelector((state) => state.user);
+	const joinClub = useJoinClub();
 	return (
 		<Card
 			style={{ width: 600 }}
@@ -38,7 +40,13 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 			<Meta title={name} description={description} />
 			<p>{fullDescription}</p>
 			<p>Участников: {partisipants}</p>
-			{user.clubsId.includes(id ? id : '') ? <Button danger>Выйти</Button> : <Button type="primary">Вступить</Button>}
+			{user.clubsId.includes(id ? id : '') ? (
+				<Button danger>Выйти</Button>
+			) : (
+				<Button onClick={() => joinClub.mutate(id ? id : '')} type="primary">
+					Вступить
+				</Button>
+			)}
 		</Card>
 	);
 };
