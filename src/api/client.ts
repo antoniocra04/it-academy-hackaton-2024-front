@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { store } from '../store/index';
 
-export const BACKEND_URL = 'http://localhost:8080/api';
+export const BACKEND_URL = 'http://147.45.158.95:8080/api';
 
 export const axiosClient = axios.create({
 	baseURL: BACKEND_URL,
