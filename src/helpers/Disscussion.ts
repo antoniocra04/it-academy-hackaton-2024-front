@@ -4,6 +4,7 @@ export interface Disscussion {
 	title: string;
 	description: string;
 	fullDescriptionl: string;
+	creatorId: string;
 	comments: Comment[];
 }
 

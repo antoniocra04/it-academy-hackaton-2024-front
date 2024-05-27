@@ -7,6 +7,7 @@ export interface Club {
 	description: string;
 	creatorClubID: string;
 	countMembers: number;
+	fullDescription: string;
 	events: Event[];
 	discussions: Disscussion[];
 }

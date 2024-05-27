@@ -11,6 +11,8 @@ import { CreateEventPage } from './pages/createEvent';
 import { EventPage } from './pages/event';
 import { CreateDisscussionPage } from './pages/createDisscussion';
 import { DisscussionPage } from './pages/disscussion';
+import { EditClubPage } from './pages/editGroup';
+import { EditEventPage } from './pages/editEvent';
 
 const router = createBrowserRouter([
 	{
@@ -36,6 +38,22 @@ const router = createBrowserRouter([
 	{
 		path: '/disscussion/:id',
 		element: <DisscussionPage />,
+	},
+	{
+		path: '/editClub/:groupId',
+		element: (
+			<PrivateRoute>
+				<EditClubPage />
+			</PrivateRoute>
+		),
+	},
+	{
+		path: '/editEvent/:id',
+		element: (
+			<PrivateRoute>
+				<EditEventPage />
+			</PrivateRoute>
+		),
 	},
 	{
 		path: '/users',

@@ -19,3 +19,7 @@ export const getClubDisscussions = async (id: string): Promise<{ data: Disscussi
 export const getDisscussionById = async (id: string): Promise<{ data: Disscussion }> => {
 	return await axiosClient.get(`Discussion/GetDiscussionById?discussionsId=${id}`);
 };
+
+export const createComment = async (values: { id: string; text: string }): Promise<{ data: Disscussion }> => {
+	return await axiosClient.post(`Discussion/CreateComment?discussionsId=${values.id}&commentariy=${values.text}`);
+};

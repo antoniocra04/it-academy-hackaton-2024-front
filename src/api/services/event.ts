@@ -15,3 +15,14 @@ export const createEvent = async (values: {
 export const getEvetntById = async (id: string): Promise<{ data: Event }> => {
 	return await axiosClient.get(`Events/getEvent?id=${id}`);
 };
+
+export const updateEvent = async (values: {
+	title: string;
+	description: string;
+	fullDescription: string;
+	id: string;
+}): Promise<any> => {
+	return await axiosClient.post(
+		`Events/EditEvent?name=${values.title}&description=${values.description}&fullDescription=${values.fullDescription}&eventId=${values.id}`,
+	);
+};

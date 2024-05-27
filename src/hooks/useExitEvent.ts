@@ -1,7 +1,7 @@
 import { getEvetntById } from '@api/services/event';
 import { exitEvent } from '@api/services/user';
 import { useTypedDispatch } from '@store/hooks/baseHooks';
-import { removeClub, removeEvent } from '@store/user/userSlice';
+import { removeEvent } from '@store/user/userSlice';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 /**

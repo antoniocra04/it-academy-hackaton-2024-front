@@ -19,3 +19,14 @@ export const createClub = async (values: {
 		`Club/CreateClub?title=${values.title}&description=${values.description}&userId=${values.userId}&fullDescription=${values.fullDescription}`,
 	);
 };
+
+export const updateClub = async (values: {
+	title: string;
+	description: string;
+	fullDescription: string;
+	id: string;
+}): Promise<any> => {
+	return await axiosClient.post(
+		`Club/EditClub?title=${values.title}&description=${values.description}&fullDescription=${values.fullDescription}&clubId=${values.id}`,
+	);
+};

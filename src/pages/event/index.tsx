@@ -1,6 +1,5 @@
 import { getEvetntById } from '@api/services/event';
 import { EventCard } from '@components/eventCard';
-import { GroupInfo } from '@components/groupInfo';
 import { PageLayout } from '@components/pageLayout';
 import { PageTitle } from '@components/pageTitle';
 import { useQuery } from '@tanstack/react-query';

@@ -23,7 +23,7 @@ export const GroupPage: React.FC = () => {
 					isLoading={groupInfo.isFetching}
 					name={groupInfo.data?.data.title}
 					description={groupInfo.data?.data.description}
-					fullDescription="asdfasdf"
+					fullDescription={groupInfo.data?.data.fullDescription}
 					partisipants={groupInfo.data?.data.countMembers}
 					id={groupInfo.data?.data.id}
 					creatorClubId={groupInfo.data?.data.creatorClubID}

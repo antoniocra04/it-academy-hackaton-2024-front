@@ -5,6 +5,7 @@ import { useTypedSelector } from '@store/hooks/baseHooks';
 import { useJoinClub } from '@hooks/useJoinClub';
 import { SettingOutlined } from '@ant-design/icons';
 import { useExitClub } from '@hooks/useExitClub';
+import { useNavigate } from 'react-router-dom';
 
 interface GroupInfoProps {
 	name: string | undefined;
@@ -28,6 +29,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 	creatorClubId,
 }) => {
 	const user = useTypedSelector((state) => state.user);
+	const navigate = useNavigate();
 	const joinClub = useJoinClub();
 	const exitClub = useExitClub();
 	return (
@@ -55,7 +57,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 						Вступить
 					</Button>
 				)}
-				{user.id == creatorClubId ? <SettingOutlined /> : ''}
+				{user.id == creatorClubId ? <SettingOutlined onClick={() => navigate(`/editClub/${id}`)} /> : ''}
 			</Flex>
 		</Card>
 	);

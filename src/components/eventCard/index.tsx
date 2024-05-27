@@ -5,6 +5,7 @@ import { useTypedSelector } from '@store/hooks/baseHooks';
 import { SettingOutlined } from '@ant-design/icons';
 import { useExitEvent } from '@hooks/useExitEvent';
 import { useJoinEvent } from '@hooks/useJoinEvent';
+import { useNavigate } from 'react-router-dom';
 
 interface EventCardProps {
 	name: string | undefined;
@@ -30,6 +31,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 	const user = useTypedSelector((state) => state.user);
 	const joinEvent = useJoinEvent(id ? id : '');
 	const exitEvent = useExitEvent(id ? id : '');
+	const navigate = useNavigate();
 	return (
 		<Card
 			style={{ width: 600 }}
@@ -55,7 +57,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 						Вступить
 					</Button>
 				)}
-				{user.id == creatorEventId ? <SettingOutlined /> : ''}
+				{user.id == creatorEventId ? <SettingOutlined onClick={() => navigate(`/editEvent/${id}`)} /> : ''}
 			</Flex>
 		</Card>
 	);

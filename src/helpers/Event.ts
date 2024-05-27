@@ -4,6 +4,7 @@ export interface Event {
 	description: string;
 	creatorEventID: string;
 	clubID: string;
+	fullDescription: string;
 	eventDate: string;
 	membersCount: number;
 }
