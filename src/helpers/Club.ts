@@ -8,6 +8,7 @@ export interface Club {
 	creatorClubID: string;
 	countMembers: number;
 	fullDescription: string;
+	imagePath: string;
 	events: Event[];
 	discussions: Disscussion[];
 }

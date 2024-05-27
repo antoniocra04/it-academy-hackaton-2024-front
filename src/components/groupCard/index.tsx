@@ -5,17 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '@store/hooks/baseHooks';
 import { useJoinClub } from '@hooks/useJoinClub';
 import { useExitClub } from '@hooks/useExitClub';
+import { HOST } from '@api/client';
 
 interface GroupCardProps {
 	name: string;
 	description: string;
 	partisipants: number;
 	id: string;
+	imagePath: string;
 }
 
 const { Meta } = Card;
 
-export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisipants, id }) => {
+export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisipants, id, imagePath }) => {
 	const navigate = useNavigate();
 	const joinClub = useJoinClub();
 	const exitClub = useExitClub();
@@ -25,13 +27,7 @@ export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisi
 			hoverable
 			style={{ width: 300 }}
 			onClick={() => navigate(`group/${id}`)}
-			cover={
-				<img
-					className={styles.groupCardImg}
-					alt="example"
-					src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-				/>
-			}
+			cover={<img className={styles.groupCardImg} alt="example" src={`${HOST}${imagePath}`} />}
 		>
 			<Meta title={name} description={description} />
 			<p>Участников: {partisipants}</p>

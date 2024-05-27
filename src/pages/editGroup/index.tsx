@@ -1,12 +1,14 @@
 import { PageLayout } from '@components/pageLayout';
 import { Button, Flex, message } from 'antd';
 import { PageTitle } from '@components/pageTitle';
-import { useDeleteUser } from '@hooks/useDeleteUser';
 import { EditClubForm } from '@components/editClubForm';
+import { useParams } from 'react-router-dom';
+import { useDeleteClub } from '@hooks/useDeleteClub';
 
 export const EditClubPage: React.FC = () => {
 	const [messageApi, contextHolder] = message.useMessage();
-	const deleteUser = useDeleteUser();
+	const { groupId } = useParams();
+	const deleteClub = useDeleteClub();
 
 	const success = () => {
 		messageApi.open({
@@ -22,7 +24,7 @@ export const EditClubPage: React.FC = () => {
 			<Flex vertical justify="center" align="center">
 				<Flex vertical style={{ width: 500 }}>
 					<EditClubForm onSuccess={success} />
-					<Button onClick={() => deleteUser.mutate()} danger>
+					<Button onClick={() => deleteClub.mutate(groupId ? groupId : '')} danger>
 						Удалить группу
 					</Button>
 				</Flex>

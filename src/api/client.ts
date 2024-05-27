@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { store } from '../store/index';
 
-export const BACKEND_URL = 'http://localhost:5035/api';
+export const HOST = 'http://localhost:5035';
+export const BACKEND_URL = `${HOST}/api`;
 
 export const axiosClient = axios.create({
 	baseURL: BACKEND_URL,

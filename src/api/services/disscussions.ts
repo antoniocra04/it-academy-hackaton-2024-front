@@ -23,3 +23,18 @@ export const getDisscussionById = async (id: string): Promise<{ data: Disscussio
 export const createComment = async (values: { id: string; text: string }): Promise<{ data: Disscussion }> => {
 	return await axiosClient.post(`Discussion/CreateComment?discussionsId=${values.id}&commentariy=${values.text}`);
 };
+
+export const updateDisscussion = async (values: {
+	title: string;
+	description: string;
+	fullDescription: string;
+	id: string;
+}): Promise<any> => {
+	return await axiosClient.post(
+		`Discussion/EditDiscussion?title=${values.title}&description=${values.description}&fullDescription=${values.fullDescription}&discussionId=${values.id}`,
+	);
+};
+
+export const deleteDisscussion = async (id: string): Promise<any> => {
+	return await axiosClient.delete(`Discussion/DeleteDiscussion?discussionsId=${id}`);
+};

@@ -6,6 +6,7 @@ import { SettingOutlined } from '@ant-design/icons';
 import { useExitEvent } from '@hooks/useExitEvent';
 import { useJoinEvent } from '@hooks/useJoinEvent';
 import { useNavigate } from 'react-router-dom';
+import { HOST } from '@api/client';
 
 interface EventCardProps {
 	name: string | undefined;
@@ -15,6 +16,7 @@ interface EventCardProps {
 	isLoading: boolean;
 	id: string | undefined;
 	creatorEventId: string | undefined;
+	imagePath: string | undefined;
 }
 
 const { Meta } = Card;
@@ -27,6 +29,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 	partisipants,
 	id,
 	creatorEventId,
+	imagePath,
 }) => {
 	const user = useTypedSelector((state) => state.user);
 	const joinEvent = useJoinEvent(id ? id : '');
@@ -35,13 +38,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 	return (
 		<Card
 			style={{ width: 600 }}
-			cover={
-				<img
-					className={styles.groupInfoImg}
-					alt="example"
-					src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-				/>
-			}
+			cover={<img className={styles.groupInfoImg} alt="example" src={`${HOST}${imagePath}`} />}
 			loading={isLoading}
 		>
 			<Meta title={name} description={description} />

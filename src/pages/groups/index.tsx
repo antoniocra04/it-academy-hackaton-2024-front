@@ -19,6 +19,7 @@ export const GroupsPage: React.FC = () => {
 								description={club.description}
 								partisipants={club.countMembers}
 								id={club.id}
+								imagePath={club.imagePath}
 							/>
 						))
 					: ''}

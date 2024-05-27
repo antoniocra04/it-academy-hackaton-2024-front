@@ -22,6 +22,7 @@ export const EventPage: React.FC = () => {
 					partisipants={event.data?.data.membersCount}
 					id={id}
 					creatorEventId={event.data?.data.creatorEventID}
+					imagePath={event.data?.data.imagePath}
 				/>
 			</Flex>
 		</PageLayout>

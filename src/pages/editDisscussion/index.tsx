@@ -1,31 +1,31 @@
 import { PageLayout } from '@components/pageLayout';
 import { Button, Flex, message } from 'antd';
 import { PageTitle } from '@components/pageTitle';
-import { EditEventForm } from '@components/editEventForm';
-import { useDeleteEvent } from '@hooks/useDeleteEvent';
+import { EditDisscussionForm } from '@components/editDisscussionForm';
+import { useDeleteDisscussion } from '@hooks/useDeleteDisscussion';
 import { useParams } from 'react-router-dom';
 
-export const EditEventPage: React.FC = () => {
+export const EditDisscussion: React.FC = () => {
 	const [messageApi, contextHolder] = message.useMessage();
 	const { id } = useParams();
-	const deleteEvent = useDeleteEvent();
+	const deleteDisscussion = useDeleteDisscussion();
 
 	const success = () => {
 		messageApi.open({
 			type: 'success',
-			content: 'Мероприятие успешно изменено',
+			content: 'Обсуждение успешно изменено',
 		});
 	};
 
 	return (
 		<PageLayout>
 			{contextHolder}
-			<PageTitle title="Редактирование мероприятия" />
+			<PageTitle title="Редактирование обсуждения" />
 			<Flex vertical justify="center" align="center">
 				<Flex vertical style={{ width: 500 }}>
-					<EditEventForm onSuccess={success} />
-					<Button onClick={() => deleteEvent.mutate(id ? id : '')} danger>
-						Удалить мероприятие
+					<EditDisscussionForm onSuccess={success} />
+					<Button onClick={() => deleteDisscussion.mutate(id ? id : '')} danger>
+						Удалить обсуждение
 					</Button>
 				</Flex>
 			</Flex>

@@ -6,9 +6,17 @@ export const createEvent = async (values: {
 	description: string;
 	userId: string;
 	clubId: string;
+	fullDescription: string;
+	file: File | null;
 }): Promise<{ data: Event }> => {
+	const formData = new FormData();
+	if (values.file) {
+		formData.append('file', values.file);
+		formData.append('fileName', values.file.name);
+	}
 	return await axiosClient.post(
-		`Events/AddEvent?name=${values.title}&description=${values.description}&idUser=${values.userId}&idClub=${values.clubId}`,
+		`Events/AddEvent?name=${values.title}&description=${values.description}&idUser=${values.userId}&idClub=${values.clubId}&fullDescription=${values.fullDescription}`,
+		formData,
 	);
 };
 
@@ -21,8 +29,23 @@ export const updateEvent = async (values: {
 	description: string;
 	fullDescription: string;
 	id: string;
+	file: File | null;
 }): Promise<any> => {
+	const formData = new FormData();
+	if (values.file) {
+		formData.append('file', values.file);
+		formData.append('fileName', values.file.name);
+		return await axiosClient.post(
+			`Events/EditEvent?name=${values.title}&description=${values.description}&fullDescription=${values.fullDescription}&eventId=${values.id}`,
+			formData,
+		);
+	}
+
 	return await axiosClient.post(
 		`Events/EditEvent?name=${values.title}&description=${values.description}&fullDescription=${values.fullDescription}&eventId=${values.id}`,
 	);
+};
+
+export const deleteEvent = async (id: string): Promise<any> => {
+	return await axiosClient.delete(`Events/DeleteEvent?id=${id}`);
 };

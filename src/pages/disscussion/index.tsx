@@ -23,7 +23,7 @@ export const DisscussionPage: React.FC = () => {
 					isLoading={disscussion.isFetching}
 					name={disscussion.data?.data.title}
 					description={disscussion.data?.data.description}
-					fullDescription={disscussion.data?.data.fullDescriptionl}
+					fullDescription={disscussion.data?.data.fullDescription}
 					creatorId={disscussion.data?.data.creatorId}
 				/>
 			</Flex>

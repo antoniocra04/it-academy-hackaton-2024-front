@@ -3,7 +3,7 @@ export interface Disscussion {
 	clubId: string;
 	title: string;
 	description: string;
-	fullDescriptionl: string;
+	fullDescription: string;
 	creatorId: string;
 	comments: Comment[];
 }

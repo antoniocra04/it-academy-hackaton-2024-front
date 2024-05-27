@@ -13,6 +13,7 @@ import { CreateDisscussionPage } from './pages/createDisscussion';
 import { DisscussionPage } from './pages/disscussion';
 import { EditClubPage } from './pages/editGroup';
 import { EditEventPage } from './pages/editEvent';
+import { EditDisscussion } from './pages/editDisscussion';
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
 		element: (
 			<PrivateRoute>
 				<EditEventPage />
+			</PrivateRoute>
+		),
+	},
+	{
+		path: '/editDisscussion/:id',
+		element: (
+			<PrivateRoute>
+				<EditDisscussion />
 			</PrivateRoute>
 		),
 	},

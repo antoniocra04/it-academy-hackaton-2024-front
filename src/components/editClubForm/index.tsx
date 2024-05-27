@@ -16,6 +16,13 @@ export const EditClubForm: React.FC<EditClubFormProps> = ({ onSuccess }) => {
 	const { groupId } = useParams();
 	const group = useQuery({ queryKey: ['group'], queryFn: () => getClubById(groupId ? groupId : '') });
 	const [fields, setFields] = useState<IFieldData[]>([]);
+	const [file, setFile] = useState<File | null>(null);
+
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			setFile(e.target.files[0]);
+		}
+	};
 
 	return (
 		<Form
@@ -28,6 +35,7 @@ export const EditClubForm: React.FC<EditClubFormProps> = ({ onSuccess }) => {
 				setFields(allFields);
 			}}
 		>
+			<input required type="file" placeholder="Название клуба" onChange={handleFileChange} />
 			<Form.Item
 				name="name"
 				rules={[
@@ -76,10 +84,11 @@ export const EditClubForm: React.FC<EditClubFormProps> = ({ onSuccess }) => {
 							description: fields[1].value,
 							fullDescription: fields[2].value,
 							id: groupId ? groupId : '',
+							file: file ? file : null,
 						})
 					}
 				>
-					Создать
+					Изменить
 				</Button>
 			</Form.Item>
 		</Form>

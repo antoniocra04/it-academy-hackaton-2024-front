@@ -27,6 +27,7 @@ export const GroupPage: React.FC = () => {
 					partisipants={groupInfo.data?.data.countMembers}
 					id={groupInfo.data?.data.id}
 					creatorClubId={groupInfo.data?.data.creatorClubID}
+					imagePath={groupInfo.data?.data.imagePath}
 				/>
 			</Flex>
 			<Title>Мероприятия: </Title>

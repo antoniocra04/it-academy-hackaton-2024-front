@@ -6,5 +6,6 @@ export interface Event {
 	clubID: string;
 	fullDescription: string;
 	eventDate: string;
+	imagePath: string;
 	membersCount: number;
 }

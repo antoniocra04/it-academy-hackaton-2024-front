@@ -1,23 +1,21 @@
 import { Form, Input, Button } from 'antd';
 import { IFieldData } from '../../helpers/FieldData';
 import { useState } from 'react';
-import { useTypedSelector } from '@store/hooks/baseHooks';
 import TextArea from 'antd/es/input/TextArea';
 import { useParams } from 'react-router-dom';
-import { useCreateEvent } from '@hooks/useCreateEvent';
+import { useQuery } from '@tanstack/react-query';
+import { useEditDisscussion } from '@hooks/useEditDisscussion';
+import { getDisscussionById } from '@api/services/disscussions';
 
-export const CreateEventForm: React.FC = () => {
-	const createEvent = useCreateEvent();
-	const { groupId } = useParams();
-	const { id } = useTypedSelector((state) => state.user);
+interface EditDisscussionFormProps {
+	onSuccess: () => void;
+}
+
+export const EditDisscussionForm: React.FC<EditDisscussionFormProps> = ({ onSuccess }) => {
+	const EditDisscussion = useEditDisscussion(onSuccess);
+	const { id } = useParams();
+	const disscussion = useQuery({ queryKey: ['disscussion'], queryFn: () => getDisscussionById(id ? id : '') });
 	const [fields, setFields] = useState<IFieldData[]>([]);
-	const [file, setFile] = useState<File | null>(null);
-
-	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			setFile(e.target.files[0]);
-		}
-	};
 
 	return (
 		<Form
@@ -30,17 +28,17 @@ export const CreateEventForm: React.FC = () => {
 				setFields(allFields);
 			}}
 		>
-			<input required type="file" placeholder="Название клуба" onChange={handleFileChange} />
 			<Form.Item
 				name="name"
 				rules={[
 					{
 						required: true,
-						message: 'Введите название мероприятия',
+						message: 'Введите название обсуждения',
 					},
 				]}
+				initialValue={disscussion.data?.data.title}
 			>
-				<Input placeholder="Название мероприятия" />
+				<Input placeholder="Название клуба" />
 			</Form.Item>
 			<Form.Item
 				name="description"
@@ -50,6 +48,7 @@ export const CreateEventForm: React.FC = () => {
 						message: 'Введите описание',
 					},
 				]}
+				initialValue={disscussion.data?.data.description}
 			>
 				<Input placeholder="Описание" />
 			</Form.Item>
@@ -61,6 +60,7 @@ export const CreateEventForm: React.FC = () => {
 						message: 'Введите полное описание',
 					},
 				]}
+				initialValue={disscussion.data?.data.fullDescription}
 			>
 				<TextArea style={{ resize: 'none', height: 150 }} placeholder="Полное описание" />
 			</Form.Item>
@@ -71,17 +71,15 @@ export const CreateEventForm: React.FC = () => {
 					htmlType="submit"
 					style={{ width: '100%' }}
 					onClick={() =>
-						createEvent.mutate({
+						EditDisscussion.mutate({
 							title: fields[0].value,
 							description: fields[1].value,
-							userId: id,
-							clubId: groupId ? groupId : '',
 							fullDescription: fields[2].value,
-							file: file ? file : null,
+							id: id ? id : '',
 						})
 					}
 				>
-					Создать
+					Изменить
 				</Button>
 			</Form.Item>
 		</Form>
