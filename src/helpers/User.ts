@@ -7,4 +7,5 @@ export interface User {
 	fatherland: string;
 	role: number;
 	clubsId: string[];
+	eventsId: string[];
 }

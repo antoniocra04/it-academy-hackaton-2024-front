@@ -5,4 +5,5 @@ export interface Event {
 	creatorEventID: string;
 	clubID: string;
 	eventDate: string;
+	membersCount: number;
 }

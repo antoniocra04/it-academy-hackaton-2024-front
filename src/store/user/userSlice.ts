@@ -19,6 +19,7 @@ const initialState: UserState = {
 	login: '',
 	password: '',
 	clubsId: [],
+	eventsId: [],
 	role: 0,
 	token: '',
 };
@@ -37,6 +38,7 @@ export const userSlice = createSlice({
 			state.role = action.payload.user.role;
 			state.token = action.payload.access_token;
 			state.clubsId = [...action.payload.user.clubsId];
+			state.eventsId = [...action.payload.user.eventsId];
 		},
 		editUser: (state, action: PayloadAction<User>) => {
 			state.name = action.payload.name;
@@ -44,16 +46,21 @@ export const userSlice = createSlice({
 			state.fatherland = action.payload.fatherland;
 		},
 		addClub: (state, action: PayloadAction<string>) => {
-			console.log(state.clubsId);
 			state.clubsId = [...state.clubsId, action.payload];
 		},
 		removeClub: (state, action: PayloadAction<string>) => {
 			state.clubsId = [...state.clubsId.filter((c) => c != action.payload)];
 		},
+		addEvent: (state, action: PayloadAction<string>) => {
+			state.eventsId = [...state.eventsId, action.payload];
+		},
+		removeEvent: (state, action: PayloadAction<string>) => {
+			state.eventsId = [...state.eventsId.filter((c) => c != action.payload)];
+		},
 		logout: () => initialState,
 	},
 });
 
-export const { setUser, logout, editUser, addClub, removeClub } = userSlice.actions;
+export const { setUser, logout, editUser, addClub, removeClub, removeEvent, addEvent } = userSlice.actions;
 export const selectUser = (state: RootState): User => state.user;
 export default userSlice.reducer;

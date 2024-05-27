@@ -13,7 +13,6 @@ const { Title } = Typography;
 export const GroupPage: React.FC = () => {
 	const { id } = useParams();
 	const user = useTypedSelector((state) => state.user);
-	console.log(user);
 	const groupInfo = useQuery({ queryKey: ['group'], queryFn: () => getClubById(id ? id : '') });
 	const navigate = useNavigate();
 
@@ -34,7 +33,13 @@ export const GroupPage: React.FC = () => {
 			<Flex gap="middle" wrap>
 				{groupInfo.isSuccess
 					? groupInfo.data.data.events.map((event, index) => (
-							<GroupActionCard id={event.id} key={index} name={event.name} description={event.description} />
+							<GroupActionCard
+								type="event"
+								id={event.id}
+								key={index}
+								name={event.name}
+								description={event.description}
+							/>
 						))
 					: ''}
 			</Flex>
@@ -43,6 +48,7 @@ export const GroupPage: React.FC = () => {
 				{groupInfo.isSuccess
 					? groupInfo.data.data.discussions.map((disccussion, index) => (
 							<GroupActionCard
+								type="disscussion"
 								id={disccussion.id}
 								key={index}
 								name={disccussion.title}

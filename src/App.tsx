@@ -10,6 +10,7 @@ import { CreateGroupPage } from './pages/createGroup';
 import { CreateEventPage } from './pages/createEvent';
 import { EventPage } from './pages/event';
 import { CreateDisscussionPage } from './pages/createDisscussion';
+import { DisscussionPage } from './pages/disscussion';
 
 const router = createBrowserRouter([
 	{
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
 	{
 		path: '/event/:id',
 		element: <EventPage />,
+	},
+	{
+		path: '/disscussion/:id',
+		element: <DisscussionPage />,
 	},
 	{
 		path: '/users',

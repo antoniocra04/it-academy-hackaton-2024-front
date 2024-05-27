@@ -1,7 +1,7 @@
-import { getAllClubs } from '@api/services/clubs';
-import { exitClub } from '@api/services/user';
+import { getEvetntById } from '@api/services/event';
+import { joinEvent } from '@api/services/user';
 import { useTypedDispatch } from '@store/hooks/baseHooks';
-import { removeClub } from '@store/user/userSlice';
+import { addEvent } from '@store/user/userSlice';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 /**
@@ -9,13 +9,13 @@ import { useMutation, useQuery } from '@tanstack/react-query';
  * @returns Объект запроса для авторизации
  */
 
-export const useExitClub = () => {
+export const useJoinEvent = (eventId: string) => {
 	const dispatch = useTypedDispatch();
-	const groups = useQuery({ queryKey: ['groups'], queryFn: getAllClubs, enabled: false });
+	const groups = useQuery({ queryKey: ['event'], queryFn: () => getEvetntById(eventId), enabled: false });
 	const loginMutation = useMutation({
-		mutationFn: (values: Parameters<typeof exitClub>[0]) => exitClub(values),
+		mutationFn: (values: Parameters<typeof joinEvent>[0]) => joinEvent(values),
 		onSuccess: (data) => {
-			dispatch(removeClub(data.data));
+			dispatch(addEvent(data.data));
 			groups.refetch();
 		},
 	});

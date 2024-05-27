@@ -15,7 +15,6 @@ export const useLogin = (onError: () => void) => {
 	const loginMutation = useMutation({
 		mutationFn: (values: Parameters<typeof login>[0]) => login(values),
 		onSuccess: (data) => {
-			console.log(data.data);
 			dispatch(setUser(data.data));
 			navigate('/');
 		},

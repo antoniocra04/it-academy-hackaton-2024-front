@@ -1,5 +1,4 @@
 import { axiosClient } from '../client';
-import { Event } from '../../helpers/Event';
 import { Disscussion } from '../../helpers/Disscussion';
 
 export const createDisscussion = async (values: {
@@ -13,6 +12,10 @@ export const createDisscussion = async (values: {
 	);
 };
 
-export const getClubDisscussions = async (id: string): Promise<{ data: Event }> => {
+export const getClubDisscussions = async (id: string): Promise<{ data: Disscussion }> => {
 	return await axiosClient.get(`Discussion/GetAllDiscussion?clubId=${id}`);
+};
+
+export const getDisscussionById = async (id: string): Promise<{ data: Disscussion }> => {
+	return await axiosClient.get(`Discussion/GetDiscussionById?discussionsId=${id}`);
 };

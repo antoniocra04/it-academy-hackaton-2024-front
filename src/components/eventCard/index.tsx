@@ -2,34 +2,34 @@ import React from 'react';
 import { Button, Card, Flex } from 'antd';
 import styles from './style.module.scss';
 import { useTypedSelector } from '@store/hooks/baseHooks';
-import { useJoinClub } from '@hooks/useJoinClub';
 import { SettingOutlined } from '@ant-design/icons';
-import { useExitClub } from '@hooks/useExitClub';
+import { useExitEvent } from '@hooks/useExitEvent';
+import { useJoinEvent } from '@hooks/useJoinEvent';
 
-interface GroupInfoProps {
+interface EventCardProps {
 	name: string | undefined;
 	description: string | undefined;
 	fullDescription: string | undefined;
 	partisipants: number | undefined;
 	isLoading: boolean;
 	id: string | undefined;
-	creatorClubId: string | undefined;
+	creatorEventId: string | undefined;
 }
 
 const { Meta } = Card;
 
-export const GroupInfo: React.FC<GroupInfoProps> = ({
+export const EventCard: React.FC<EventCardProps> = ({
 	name,
 	description,
-	partisipants,
 	fullDescription,
 	isLoading,
+	partisipants,
 	id,
-	creatorClubId,
+	creatorEventId,
 }) => {
 	const user = useTypedSelector((state) => state.user);
-	const joinClub = useJoinClub();
-	const exitClub = useExitClub();
+	const joinEvent = useJoinEvent(id ? id : '');
+	const exitEvent = useExitEvent(id ? id : '');
 	return (
 		<Card
 			style={{ width: 600 }}
@@ -46,16 +46,16 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 			<p>{fullDescription}</p>
 			<p>Участников: {partisipants}</p>
 			<Flex gap="middle">
-				{user.clubsId.includes(id ? id : '') ? (
-					<Button onClick={() => exitClub.mutate(id ? id : '')} danger>
+				{user.eventsId.includes(id ? id : '') ? (
+					<Button onClick={() => exitEvent.mutate(id ? id : '')} danger>
 						Выйти
 					</Button>
 				) : (
-					<Button onClick={() => joinClub.mutate(id ? id : '')} type="primary">
+					<Button onClick={() => joinEvent.mutate(id ? id : '')} type="primary">
 						Вступить
 					</Button>
 				)}
-				{user.id == creatorClubId ? <SettingOutlined /> : ''}
+				{user.id == creatorEventId ? <SettingOutlined /> : ''}
 			</Flex>
 		</Card>
 	);

@@ -1,4 +1,5 @@
 import { getEvetntById } from '@api/services/event';
+import { EventCard } from '@components/eventCard';
 import { GroupInfo } from '@components/groupInfo';
 import { PageLayout } from '@components/pageLayout';
 import { PageTitle } from '@components/pageTitle';
@@ -14,14 +15,14 @@ export const EventPage: React.FC = () => {
 		<PageLayout>
 			<PageTitle title="Мероприятие" />
 			<Flex justify="center">
-				<GroupInfo
+				<EventCard
 					isLoading={event.isFetching}
 					name={event.data?.data.name}
 					description={event.data?.data.description}
 					fullDescription="asdfasdf"
-					partisipants={12}
-					id="12"
-					creatorClubId="dffd"
+					partisipants={event.data?.data.membersCount}
+					id={id}
+					creatorEventId={event.data?.data.creatorEventID}
 				/>
 			</Flex>
 		</PageLayout>
