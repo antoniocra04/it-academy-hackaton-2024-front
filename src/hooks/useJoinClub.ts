@@ -1,9 +1,7 @@
-import { login } from '@api/services/auth';
 import { joinClub } from '@api/services/user';
 import { useTypedDispatch } from '@store/hooks/baseHooks';
 import { addClub } from '@store/user/userSlice';
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
 
 /**
  * Хук для авторизации пользователя

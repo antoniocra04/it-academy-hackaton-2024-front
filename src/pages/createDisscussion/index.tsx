@@ -1,5 +1,4 @@
 import { CreateDisscussionForm } from '@components/createDisscussionForm/indext';
-import { CreateEventForm } from '@components/createEventForm';
 import { PageLayout } from '@components/pageLayout';
 import { PageTitle } from '@components/pageTitle';
 import { Flex } from 'antd';

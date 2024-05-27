@@ -21,6 +21,7 @@ export const EventPage: React.FC = () => {
 					fullDescription="asdfasdf"
 					partisipants={12}
 					id="12"
+					creatorClubId="dffd"
 				/>
 			</Flex>
 		</PageLayout>
