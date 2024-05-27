@@ -9,6 +9,7 @@ import { PrivateRoute } from '@components/privateRoute';
 import { CreateGroupPage } from './pages/createGroup';
 import { CreateEventPage } from './pages/createEvent';
 import { EventPage } from './pages/event';
+import { CreateDisscussionPage } from './pages/createDisscussion';
 
 const router = createBrowserRouter([
 	{
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
 		element: (
 			<PrivateRoute>
 				<CreateEventPage />
+			</PrivateRoute>
+		),
+	},
+	{
+		path: '/createDisscussion/:groupId',
+		element: (
+			<PrivateRoute>
+				<CreateDisscussionPage />
 			</PrivateRoute>
 		),
 	},

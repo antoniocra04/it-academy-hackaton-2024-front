@@ -1,3 +1,4 @@
+import { Disscussion } from './Disscussion';
 import { Event } from './Event';
 
 export interface Club {
@@ -7,4 +8,5 @@ export interface Club {
 	creatorClubID: string;
 	countMembers: number;
 	events: Event[];
+	discussions: Disscussion[];
 }

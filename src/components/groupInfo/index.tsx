@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Card } from 'antd';
+import { Button, Card, Flex } from 'antd';
 import styles from './style.module.scss';
 import { useTypedSelector } from '@store/hooks/baseHooks';
 import { useJoinClub } from '@hooks/useJoinClub';
+import { SettingOutlined } from '@ant-design/icons';
 
 interface GroupInfoProps {
 	name: string | undefined;
@@ -11,6 +12,7 @@ interface GroupInfoProps {
 	partisipants: number | undefined;
 	isLoading: boolean;
 	id: string | undefined;
+	creatorClubId: string | undefined;
 }
 
 const { Meta } = Card;
@@ -22,6 +24,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 	fullDescription,
 	isLoading,
 	id,
+	creatorClubId,
 }) => {
 	const user = useTypedSelector((state) => state.user);
 	const joinClub = useJoinClub();
@@ -40,13 +43,16 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 			<Meta title={name} description={description} />
 			<p>{fullDescription}</p>
 			<p>Участников: {partisipants}</p>
-			{user.clubsId.includes(id ? id : '') ? (
-				<Button danger>Выйти</Button>
-			) : (
-				<Button onClick={() => joinClub.mutate(id ? id : '')} type="primary">
-					Вступить
-				</Button>
-			)}
+			<Flex gap="middle">
+				{user.clubsId.includes(id ? id : '') ? (
+					<Button danger>Выйти</Button>
+				) : (
+					<Button onClick={() => joinClub.mutate(id ? id : '')} type="primary">
+						Вступить
+					</Button>
+				)}
+				{user.id == creatorClubId ? <SettingOutlined /> : ''}
+			</Flex>
 		</Card>
 	);
 };

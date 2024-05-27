@@ -27,6 +27,7 @@ export const GroupPage: React.FC = () => {
 					fullDescription="asdfasdf"
 					partisipants={groupInfo.data?.data.countMembers}
 					id={groupInfo.data?.data.id}
+					creatorClubId={groupInfo.data?.data.creatorClubID}
 				/>
 			</Flex>
 			<Title>Мероприятия: </Title>
@@ -39,7 +40,16 @@ export const GroupPage: React.FC = () => {
 			</Flex>
 			<Title>Обсуждение: </Title>
 			<Flex gap="middle" wrap>
-				<GroupActionCard id="sdf" name="asdfasdf" description="asdfasf" />
+				{groupInfo.isSuccess
+					? groupInfo.data.data.discussions.map((disccussion, index) => (
+							<GroupActionCard
+								id={disccussion.id}
+								key={index}
+								name={disccussion.title}
+								description={disccussion.description}
+							/>
+						))
+					: ''}
 			</Flex>
 			{groupInfo.isSuccess
 				? groupInfo.data.data.creatorClubID == user.id && (
@@ -50,7 +60,12 @@ export const GroupPage: React.FC = () => {
 								icon={<AppstoreAddOutlined />}
 								tooltip={<div>Создать мероприятие</div>}
 							/>
-							<FloatButton type="primary" icon={<FireOutlined />} tooltip={<div>Создать обсуждение</div>} />
+							<FloatButton
+								type="primary"
+								onClick={() => navigate(`/createDisscussion/${groupInfo.data.data.id}`)}
+								icon={<FireOutlined />}
+								tooltip={<div>Создать обсуждение</div>}
+							/>
 						</FloatButton.Group>
 					)
 				: ''}

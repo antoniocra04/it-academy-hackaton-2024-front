@@ -1,15 +1,13 @@
 import { Form, Input, Button } from 'antd';
 import { IFieldData } from '../../helpers/FieldData';
 import { useState } from 'react';
-import { useTypedSelector } from '@store/hooks/baseHooks';
 import TextArea from 'antd/es/input/TextArea';
+import { useCreateDisscussion } from '@hooks/useCreateDisscussion';
 import { useParams } from 'react-router-dom';
-import { useCreateEvent } from '@hooks/useCreateEvent';
 
-export const CreateEventForm: React.FC = () => {
-	const createEvent = useCreateEvent();
+export const CreateDisscussionForm: React.FC = () => {
+	const createDisscussion = useCreateDisscussion();
 	const { groupId } = useParams();
-	const { id } = useTypedSelector((state) => state.user);
 	const [fields, setFields] = useState<IFieldData[]>([]);
 
 	return (
@@ -28,11 +26,11 @@ export const CreateEventForm: React.FC = () => {
 				rules={[
 					{
 						required: true,
-						message: 'Введите название мероприятия',
+						message: 'Введите название обсуждения',
 					},
 				]}
 			>
-				<Input placeholder="Название мероприятия" />
+				<Input placeholder="Название обсуждения" />
 			</Form.Item>
 			<Form.Item
 				name="description"
@@ -63,10 +61,10 @@ export const CreateEventForm: React.FC = () => {
 					htmlType="submit"
 					style={{ width: '100%' }}
 					onClick={() =>
-						createEvent.mutate({
+						createDisscussion.mutate({
 							title: fields[0].value,
 							description: fields[1].value,
-							userId: id,
+							fullDescription: fields[2].value,
 							clubId: groupId ? groupId : '',
 						})
 					}
