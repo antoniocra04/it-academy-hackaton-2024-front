@@ -1,4 +1,4 @@
-import { Form, Input, Button, Upload, UploadProps } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { IFieldData } from '../../helpers/FieldData';
 import { useState } from 'react';
 import { useCreateClub } from '@hooks/useCreateClub';

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from 'antd';
-import styles from './style.module.scss';
 import { SettingOutlined } from '@ant-design/icons';
 import { useTypedSelector } from '@store/hooks/baseHooks';
 import { useNavigate, useParams } from 'react-router-dom';
