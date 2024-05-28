@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 export const EventPage: React.FC = () => {
 	const { id } = useParams();
-	const event = useQuery({ queryKey: ['event'], queryFn: () => getEvetntById(id ? id : '') });
+	const event = useQuery({ queryKey: ['event'], queryFn: () => getEvetntById(id ? id : ''), staleTime: 0 });
 
 	return (
 		<PageLayout>
@@ -18,7 +18,7 @@ export const EventPage: React.FC = () => {
 					isLoading={event.isFetching}
 					name={event.data?.data.name}
 					description={event.data?.data.description}
-					fullDescription="asdfasdf"
+					fullDescription={event.data?.data.fullDescription}
 					partisipants={event.data?.data.membersCount}
 					id={id}
 					creatorEventId={event.data?.data.creatorEventID}

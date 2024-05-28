@@ -38,12 +38,12 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 	return (
 		<Card
 			style={{ width: 600 }}
-			cover={<img className={styles.groupInfoImg} alt="example" src={`${HOST}${imagePath}`} />}
+			cover={<img className={styles.groupInfoImg} alt="" src={`${HOST}${imagePath}`} />}
 			loading={isLoading}
 		>
 			<Meta title={name} description={description} />
 			<p>{fullDescription}</p>
-			<p>Участников: {partisipants}</p>
+			<p>Участников: {user.clubsId.includes(id ? id : '') ? (partisipants ? partisipants : 0) + 1 : partisipants}</p>
 			<Flex gap="middle">
 				{user.clubsId.includes(id ? id : '') ? (
 					<Button onClick={() => exitClub.mutate(id ? id : '')} danger>

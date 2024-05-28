@@ -26,17 +26,7 @@ export const DisscussionCard: React.FC<DisscussionCardProps> = ({
 	const { id } = useParams();
 	const navigate = useNavigate();
 	return (
-		<Card
-			style={{ width: 600 }}
-			cover={
-				<img
-					className={styles.groupInfoImg}
-					alt="example"
-					src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-				/>
-			}
-			loading={isLoading}
-		>
+		<Card style={{ width: 600 }} loading={isLoading}>
 			<Meta title={name} description={description} />
 			<p>{fullDescription}</p>
 			{user.id == creatorId ? <SettingOutlined onClick={() => navigate(`/editDisscussion/${id}`)} /> : ''}

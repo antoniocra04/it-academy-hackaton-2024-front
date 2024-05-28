@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { store } from '../store/index';
 
-export const HOST = 'http://localhost:5035';
+export const HOST = 'http://147.45.158.95:8080';
 export const BACKEND_URL = `${HOST}/api`;
 
 export const axiosClient = axios.create({
