@@ -6,7 +6,6 @@ import { useJoinClub } from '@hooks/useJoinClub';
 import { SettingOutlined } from '@ant-design/icons';
 import { useExitClub } from '@hooks/useExitClub';
 import { useNavigate } from 'react-router-dom';
-import { HOST } from '@api/client';
 
 interface GroupInfoProps {
 	name: string | undefined;
@@ -38,7 +37,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 	return (
 		<Card
 			style={{ width: 600 }}
-			cover={<img className={styles.groupInfoImg} alt="" src={`${HOST}${imagePath}`} />}
+			cover={<img className={styles.groupInfoImg} alt="" src={`${imagePath}`} />}
 			loading={isLoading}
 		>
 			<Meta title={name} description={description} />
