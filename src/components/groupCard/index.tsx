@@ -27,7 +27,7 @@ export const GroupCard: React.FC<GroupCardProps> = ({ name, description, partisi
 			hoverable
 			style={{ width: 300 }}
 			onClick={() => navigate(`group/${id}`)}
-			cover={<img className={styles.groupCardImg} alt="" src={`${HOST}${imagePath}`} />}
+			cover={<img className={styles.groupCardImg} alt="" src={`${imagePath}`} />}
 		>
 			<Meta title={name} description={description} />
 			<p>Участников: {partisipants}</p>

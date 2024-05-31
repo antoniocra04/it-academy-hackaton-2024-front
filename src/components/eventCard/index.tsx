@@ -38,7 +38,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 	return (
 		<Card
 			style={{ width: 600 }}
-			cover={<img className={styles.groupInfoImg} alt="" src={`${HOST}${imagePath}`} />}
+			cover={<img className={styles.groupInfoImg} alt="" src={`${imagePath}`} />}
 			loading={isLoading}
 		>
 			<Meta title={name} description={description} />
