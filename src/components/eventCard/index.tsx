@@ -6,7 +6,6 @@ import { SettingOutlined } from '@ant-design/icons';
 import { useExitEvent } from '@hooks/useExitEvent';
 import { useJoinEvent } from '@hooks/useJoinEvent';
 import { useNavigate } from 'react-router-dom';
-import { HOST } from '@api/client';
 
 interface EventCardProps {
 	name: string | undefined;

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '@store/hooks/baseHooks';
 import { useJoinClub } from '@hooks/useJoinClub';
 import { useExitClub } from '@hooks/useExitClub';
-import { HOST } from '@api/client';
 
 interface GroupCardProps {
 	name: string;
