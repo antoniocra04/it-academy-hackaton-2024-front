@@ -59,7 +59,7 @@ export const GroupPage: React.FC = () => {
 					: ''}
 			</Flex>
 			{groupInfo.isSuccess
-				? groupInfo.data.data.creatorClubID == user.id && (
+				? (groupInfo.data.data.creatorClubID == user.id || user.role == 1) && (
 						<FloatButton.Group style={{ right: 70, bottom: 90 }}>
 							<FloatButton
 								type="primary"

@@ -6,7 +6,6 @@ import { SettingOutlined } from '@ant-design/icons';
 import { useExitEvent } from '@hooks/useExitEvent';
 import { useJoinEvent } from '@hooks/useJoinEvent';
 import { useNavigate } from 'react-router-dom';
-import { HOST } from '@api/client';
 
 interface EventCardProps {
 	name: string | undefined;
@@ -38,7 +37,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 	return (
 		<Card
 			style={{ width: 600 }}
-			cover={<img className={styles.groupInfoImg} alt="" src={`${HOST}${imagePath}`} />}
+			cover={<img className={styles.groupInfoImg} alt="" src={`${imagePath}`} />}
 			loading={isLoading}
 		>
 			<Meta title={name} description={description} />
