@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM huecker.io/library/node:lts-alpine
 
 WORKDIR /app
 
