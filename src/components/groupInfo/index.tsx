@@ -53,7 +53,7 @@ export const GroupInfo: React.FC<GroupInfoProps> = ({
 						Вступить
 					</Button>
 				)}
-				{user.id == creatorClubId ? <SettingOutlined onClick={() => navigate(`/editClub/${id}`)} /> : ''}
+				{user.id == creatorClubId || user.role == 1 ? <SettingOutlined onClick={() => navigate(`/editClub/${id}`)} /> : ''}
 			</Flex>
 		</Card>
 	);
